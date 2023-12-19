@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from . import forms
 from django.urls import reverse
 from django.http import HttpResponseRedirect
@@ -84,8 +84,8 @@ def marcar_como_listo(request, detalle_id):
 @login_required
 def editarDeuda(request, id):
     if request.user.is_superuser:
-        deuda = Deudas.objects.get(id=id)
-        deudaDetalle = DetallesDeuda.objects.get(id=id)
+        deuda = get_object_or_404(Deudas, id=id)
+        deudaDetalle = get_object_or_404(DetallesDeuda, id=id)
         form_deuda = forms.Deuda(instance=deuda)
         form_detalle_deuda = forms.DetalleDeuda(instance=deudaDetalle)
         if request.method == 'POST':
@@ -119,6 +119,7 @@ def editarDeuda(request, id):
                 print("Formulario valido")
                 form_deuda.save()
                 form_detalle_deuda.save()
+                
                 return HttpResponseRedirect(reverse('tablaDeudas'))
             else:
                 print("Errores: ",form_deuda.errors)

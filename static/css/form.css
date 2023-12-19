@@ -1,0 +1,8 @@
+#nombreLabel {
+    display: none;
+}
+
+/* Muestra la etiqueta cuando el campo está enfocado */
+.input-group-outline input:focus + label {
+    display: block;
+}

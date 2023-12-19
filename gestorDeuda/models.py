@@ -16,7 +16,7 @@ class DetallesDeuda(models.Model):
 
     def calcular_valor_mensual(self):
         if self.cantidadCuota != 0:
-            self.calculoValor = self.deuda.deudaTotal / self.cantidadCuota
+            self.calculoValor = self.deuda.deudaTotal // self.cantidadCuota
         else:
             self.calculoValor = 0
 
@@ -26,8 +26,10 @@ class DetallesDeuda(models.Model):
             self.valorMensual = self.calculoValor
         else:
             if self.valorMensual == 0:
+                self.calcular_valor_mensual()
                 self.valorMensual = self.calculoValor    
-        self.calcular_valor_mensual()
+        
+        
         
         if self.cantidadCuota == 0:
             self.finalizada = True

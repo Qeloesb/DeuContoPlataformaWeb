@@ -159,37 +159,33 @@
                                                 <div class="card-header">
                                                 </div>
                                                 <div class="card-body">
-                                                    <form class="user" method="post">
+                                                    <form class="user"  method="post">
                                                         {% csrf_token %}
                                                         {{ form.non_field_errors }}
+                                                        {{ form_deuda.usuario }}
                                                         <div class="input-group input-group-outline mb-3">
-                                                            <label for="id_nombre" class="form-label">Nombre de la Deuda</label>
-                                                            <input type="text" name="nombre" class="form-control form-control-user"
-                                                                maxlength="150" required id="id_nombre">
-                                                       
+                                                            <label class="form-label">Nombre de la Deuda</label>
+                                                            {{ form_deuda.nombre }}
                                                         </div>
                                                         <div class="input-group input-group-outline mb-3">
                                                             <label for="id_deudaTotal" class="form-label">Deuda Total</label>
-                                                            <input type="number" name="deudaTotal" class="form-control form-control-user"
-                                                            required id="id_deudaTotal">
+                                                            {{ form_deuda.deudaTotal}}
                                                         </div>
+                                                        {{ form_detalle_deuda.deuda }}
+                                                        {{ form_detalle_deuda.valorMensual }}
+                                                        {{ form_detalle_deuda.calculoValor }}
                                                         <div  class="input-group input-group-outline mb-3">
                                                             <label for="id_cantidadCuota" class="form-label">Cantidad de Cuotas</label>
-                                                            <input type="number" name="cantidadCuota" class="form-control form-control-user"
-                                                                required id="id_cantidadCuota">
-                                                            <span class="text-danger"></span>
-                                                            
+                                                            {{ form_detalle_deuda.cantidadCuota}}
                                                         </div>
                                                         <div class="input-group input-group-outline mb-3">
                                                             <label class="form-label">Descripcion</label>
-                                                            <input type="text" name="descripcion" class="form-control form-control-user"
-                                                                required id="id_descripcion">
-                                            
+                                                            {{ form_detalle_deuda.descripcion}}
                                                         </div>
+                                                        {{ form_detalle_deuda.finalizada }}
                                                         <div class="text-center">
                                                             <button type="submit"
-                                                                class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Registrar
-                                                                Deuda</button>
+                                                                class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">{{titulo}}</button>
                                                         </div>
                                                     </form>
                                                 </div>

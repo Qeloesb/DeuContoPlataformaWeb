@@ -24,7 +24,7 @@ class Deuda(forms.ModelForm):
 
     class Meta:
         model = Deudas
-        fields = '__all__'
+        fields = ['usuario','nombre', 'deudaTotal']
         widgets = {'usuario': forms.HiddenInput()} 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
